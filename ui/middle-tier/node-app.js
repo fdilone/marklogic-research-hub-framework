@@ -30,25 +30,26 @@ function keepCacheHot() {
     var str = '';
 
     //another chunk of data has been received, so append it to `str`
-    response.on('data', function (chunk) {
+    response.on('data', function(chunk) {
       str += chunk;
     });
 
     //the whole response has been received, so we just print it out here
-    response.on('end', function () {
+    response.on('end', function() {
       console.log('keepCacheHot: ' + str);
 
       setTimeout(keepCacheHot, keepCacheHotTimeMs);
     });
-  }
+  };
 
   http.request(options, callback).end();
 }
 if (keepCacheHotTimeMs && keepCacheHotTimeMs > 0) {
-  console.log('keepCacheHot: keeping cache hot every ' + keepCacheHotTimeMs + ' ms');
+  console.log(
+    'keepCacheHot: keeping cache hot every ' + keepCacheHotTimeMs + ' ms'
+  );
   keepCacheHot();
-}
-else {
+} else {
   console.log('keepCacheHot: not keeping cache hot');
 }
 

@@ -1,0 +1,46 @@
+{
+  "template": {
+    "context": "/envelope[instance/YourConceptName]",
+    "collections": ["YourConceptName"],
+
+    "vars": [{
+
+      "name": "PRHPrefix",
+      "val": "'PRH:'"
+
+    },{
+
+      "name": "yourconceptnameIri",
+      "val": "sem:iri(xdmp:node-uri(.))"
+
+    }],
+
+    "templates": [{
+
+      "context": "instance/YourConceptName",
+
+      "triples": [{
+        "subject": {
+          "val": "$yourconceptnameIri"
+        },
+        "predicate": {
+          "val": "sem:iri($PRHPrefix || 'entityType')"
+        },
+        "object": {
+          "val": "lower-case(name(.))"
+        }
+      },{
+        "subject": {
+          "val": "$yourconceptnameIri"
+        },
+        "predicate": {
+          "val": "sem:iri($PRHPrefix || 'preferredName')"
+        },
+        "object": {
+          "val": "string(name)"
+        }
+      }]
+
+    }]
+  }
+}

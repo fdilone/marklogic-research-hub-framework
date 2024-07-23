@@ -13,7 +13,7 @@ const SearchBar = ({
   queryText,
   onQueryTextChange,
   onSearchExecute,
-  placeholder = 'Search...',
+  placeholder = 'Buscar...',
   searchPending,
   workspaceRelevanceQuery,
   onWorkspaceRelevanceToggle
